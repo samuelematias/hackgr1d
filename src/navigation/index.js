@@ -12,15 +12,30 @@ import DashboardScreen, {
   dashboardScreenConfig,
 } from '~/modules/login/screens/DashboardScreen';
 
+import EmailScreen, {
+  emailScreenConfig,
+} from '~/modules/login/screens/EmailScreen';
+
+import PasswordScreen, {
+  passwordScreenConfig,
+} from '~/modules/login/screens/PasswordScreen';
+
 const LoginStack = createStackNavigator(
   {
     DashboardScreen: {
       screen: DashboardScreen,
       navigationOptions: dashboardScreenConfig,
     },
+    EmailScreen: {
+      screen: EmailScreen,
+      navigationOptions: emailScreenConfig,
+    },
+    PasswordScreen: {
+      screen: PasswordScreen,
+      navigationOptions: passwordScreenConfig,
+    },
   },
   {
-    headerMode: 'none',
     initialRouteName: 'DashboardScreen',
   },
 );

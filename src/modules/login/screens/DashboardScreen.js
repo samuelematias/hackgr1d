@@ -30,12 +30,14 @@ const WrapperButton = styled.View`
   padding-bottom: ${size(25)}px;
 `;
 
-const WrapperForgotPassword = styled.TouchableOpacity`
+const WrapperForgotPassword = styled.View`
   justify-content: center;
   align-items: center;
   flex-direction: row;
   margin-left: ${size(10)};
 `;
+
+const WrapperLogin = styled.TouchableOpacity``;
 
 const TextForgotPassword = styled.Text.attrs(() => ({
   ellipsizeMode: 'tail',
@@ -155,20 +157,22 @@ const DashboardScreen = props => {
         <WrapperButton>
           <Button
             variant="enable"
-            onPress={() => navigate('')}
+            onPress={() => navigate('EmailScreen')}
             labelText="Registrar"
           />
-          <WrapperForgotPassword
-            onPress={() => {}}
-            hitSlop={{
-              top: 10,
-              left: 10,
-              bottom: 10,
-              right: 10,
-            }}
-          >
+          <WrapperForgotPassword>
             <TextForgotPassword>Já tem conta?</TextForgotPassword>
-            <TextForgotSignUp> Login</TextForgotSignUp>
+            <WrapperLogin
+              onPress={() => navigate('EmailScreen')}
+              hitSlop={{
+                top: 10,
+                left: 10,
+                bottom: 10,
+                right: 10,
+              }}
+            >
+              <TextForgotSignUp> Login</TextForgotSignUp>
+            </WrapperLogin>
           </WrapperForgotPassword>
         </WrapperButton>
       </SafeArea>
