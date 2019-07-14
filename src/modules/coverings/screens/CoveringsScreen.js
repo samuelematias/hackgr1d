@@ -50,7 +50,7 @@ const CoveringsScreen = props => {
         status={status}
         typeCard="covering"
         onPress={() =>
-          navigate('', {
+          navigate('CoveringsDetailScreen', {
             title,
             about,
           })

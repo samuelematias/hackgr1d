@@ -46,6 +46,10 @@ import MyDataScreen, {
   myDataScreenConfig,
 } from '~/modules/myData/screens/MyDataScreen';
 
+import CoveringsDetailScreen, {
+  coveringsDetailScreenConfig,
+} from '~/modules/coverings/screens/CoveringsDetailScreen';
+
 const LoginStack = createStackNavigator(
   {
     DashboardScreen: {
@@ -88,12 +92,31 @@ const CoveringsStack = createStackNavigator(
       screen: CoveringsScreen,
       navigationOptions: coveringsScreenConfig,
     },
+    CoveringsDetailScreen: {
+      screen: CoveringsDetailScreen,
+      navigationOptions: coveringsDetailScreenConfig,
+    },
   },
   {
-    headerMode: 'none',
     initialRouteName: 'CoveringsScreen',
   },
 );
+
+CoveringsStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  const statsIsNotEmpty = navigation.state.index > 0;
+  const stateOnRoute1 = navigation.state.routes[1];
+  const route1Name = stateOnRoute1
+    ? stateOnRoute1.routeName === 'CoveringsDetailScreen'
+    : false;
+  if (statsIsNotEmpty && stateOnRoute1 && route1Name) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 
 const LossesStack = createStackNavigator(
   {
@@ -165,7 +188,7 @@ const Navigation = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'TabBarStack',
+    initialRouteName: 'LoginStack',
     defaultNavigationOptions: {
       gesturesEnabled: false,
     },

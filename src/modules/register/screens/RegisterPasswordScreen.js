@@ -127,17 +127,12 @@ const RegisterPasswordScreen = props => {
     };
   }, []);
 
-  // function handleAutoFocusRef() {
-  //   return setAutoFocusRef(true);
-  // }
-
   const myInputCallback = dataFromChild => {
     setInputValue(dataFromChild.inputValue);
   };
 
   const handleOnSubmitEditing = () => {
     if (inputValue) {
-      // setAutoFocusRef(false);
       navigate('TabBarStack', {
         // nameValue,
         // phoneValue,
@@ -161,7 +156,6 @@ const RegisterPasswordScreen = props => {
             <WrapperOptions>
               <WrapperInput>
                 <Input
-                  // autoFocusRef={autoFocusRef}
                   inputType="password"
                   label="Senha"
                   autoFocus
