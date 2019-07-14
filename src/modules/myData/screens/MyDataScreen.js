@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
 import {
@@ -9,6 +9,7 @@ import {
 import IconUser from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialIcons';
 import IconLogout from 'react-native-vector-icons/SimpleLineIcons';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 import { StatusBarManager, CollapsingToolbar } from '~/common/components';
 
@@ -52,7 +53,6 @@ const TextInfo = styled.Text.attrs(() => ({
   color: ${fineGrey};
   font-weight: normal;
   padding-left: ${size(10)};
-  /* padding-bottom: ${size(20)}; */
 `;
 
 const WrapperRectangleLogout = styled.TouchableOpacity`
@@ -83,7 +83,6 @@ const TextInfoLogout = styled.Text.attrs(() => ({
   color: ${fineGrey};
   font-weight: normal;
   padding-left: ${size(10)};
-  /* padding-bottom: ${size(20)}; */
 `;
 
 export function myDataScreenConfig() {
@@ -92,12 +91,25 @@ export function myDataScreenConfig() {
   };
 }
 
-const MyDataScreen = () => {
-  // const { navigation } = props;
-  // const { navigate } = navigation;
+const MyDataScreen = props => {
+  const { navigation } = props;
 
   const user = 'Samuel Mataraso';
   const email = 'samuelmataraso@gmail.com';
+
+  const handleResetAction = () => {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'LoginStack',
+          params: {},
+        }),
+      ],
+    });
+
+    return navigation.dispatch(resetAction);
+  };
 
   return (
     <CollapsingToolbar headerTitle="Meus dados">
@@ -115,7 +127,7 @@ const MyDataScreen = () => {
             <TextInfo>{email}</TextInfo>
           </WrapperText>
         </WrapperRectangle>
-        <WrapperRectangleLogout>
+        <WrapperRectangleLogout onPress={() => handleResetAction()}>
           <IconLogout name="logout" size={size(30)} color={strawberry} />
           <WrapperTextLogout>
             <TextInfoLogout>Sair</TextInfoLogout>
@@ -128,8 +140,8 @@ const MyDataScreen = () => {
 
 export default MyDataScreen;
 
-// MyDataScreen.propTypes = {
-//   navigation: PropTypes.objectOf(
-//     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-//   ).isRequired,
-// };
+MyDataScreen.propTypes = {
+  navigation: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  ).isRequired,
+};
