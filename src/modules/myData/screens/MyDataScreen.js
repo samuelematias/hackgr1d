@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
@@ -7,19 +6,84 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import IconUser from 'react-native-vector-icons/FontAwesome';
+import IconEmail from 'react-native-vector-icons/MaterialIcons';
+import IconLogout from 'react-native-vector-icons/SimpleLineIcons';
 
 import { StatusBarManager, CollapsingToolbar } from '~/common/components';
-// import { Card } from '~/modules/courses/components';
+
+import { Metrics, Colors, Fonts } from '~/themes';
+
+const { size } = Metrics;
+const { fineGrey, angelBlue, lightGrey, strawberry } = Colors;
+const { type, typography } = Fonts;
 
 const Content = styled.View`
   display: flex;
   flex: 1;
-  margin-left: ${wp('2%')};
-  margin-right: ${wp('2%')};
 `;
 
-const Separator = styled.View`
-  height: ${hp('2%')};
+const WrapperRectangle = styled.View`
+  flex: 1;
+  flex-direction: row;
+  height: ${hp('10%')};
+  border-top-color: ${lightGrey};
+  border-top-width: 1;
+  border-bottom-color: ${lightGrey};
+  border-bottom-width: 1;
+  align-items: center;
+  justify-content: center;
+  margin-top: ${hp('5%')};
+`;
+
+const WrapperText = styled.View`
+  align-items: center;
+  justify-content: center;
+  width: ${wp('70%')};
+`;
+
+const TextInfo = styled.Text.attrs(() => ({
+  ellipsizeMode: 'tail',
+  numberOfLines: 1,
+}))`
+  text-align: center;
+  font-family: ${type.sf.medium};
+  font-size: ${typography.regular};
+  color: ${fineGrey};
+  font-weight: normal;
+  padding-left: ${size(10)};
+  /* padding-bottom: ${size(20)}; */
+`;
+
+const WrapperRectangleLogout = styled.TouchableOpacity`
+  flex: 1;
+  flex-direction: row;
+  height: ${hp('10%')};
+  border-top-color: ${lightGrey};
+  border-top-width: 1;
+  border-bottom-color: ${lightGrey};
+  border-bottom-width: 1;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: ${hp('25%')};
+`;
+
+const WrapperTextLogout = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+const TextInfoLogout = styled.Text.attrs(() => ({
+  ellipsizeMode: 'tail',
+  numberOfLines: 1,
+}))`
+  text-align: center;
+  font-family: ${type.sf.medium};
+  font-size: ${typography.regular};
+  color: ${fineGrey};
+  font-weight: normal;
+  padding-left: ${size(10)};
+  /* padding-bottom: ${size(20)}; */
 `;
 
 export function myDataScreenConfig() {
@@ -32,123 +96,32 @@ const MyDataScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  //   const data = [
-  //     {
-  //       id: '1',
-  //       courseImage: 'https://i.imgur.com/pVJSPiF.png',
-  //       courseName: 'AutoCad',
-  //       date: '30/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '2',
-  //       courseImage: '',
-  //       courseName: 'Engenharia em 2019',
-  //       date: '03/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '3',
-  //       courseImage: 'https://i.imgur.com/mgGnMXH.png',
-  //       courseName: 'A:Z da Engenharia',
-  //       date: '05/05/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '4',
-  //       courseImage: '',
-  //       courseName: 'Por trás das Contruções',
-  //       date: '01/07/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: '',
-  //     },
-  //     {
-  //       id: '5',
-  //       courseImage: 'https://i.imgur.com/DDKBKAe.png',
-  //       courseName: 'Certificação de BIM',
-  //       date: '20/03/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '6',
-  //       courseImage: 'https://i.imgur.com/OiVthKM.png',
-  //       courseName: 'Oque é BIM?',
-  //       date: '14/04/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //   ];
-
-  //   const renderCoursesListItem = item => {
-  //     const {
-  //       courseImage,
-  //       courseName,
-  //       date,
-  //       author,
-  //       body,
-  //       courseLink,
-  //       videoLink,
-  //     } = item;
-
-  //     return (
-  //       <Card
-  //         courseImage={courseImage}
-  //         courseName={courseName}
-  //         date={date}
-  //         author={author}
-  //         onPress={() =>
-  //           navigate('CoursesDetailScreen', {
-  //             title: courseName,
-  //             author,
-  //             body,
-  //             videoLink,
-  //             courseLink,
-  //           })
-  //         }
-  //       />
-  //     );
-  //   };
-
-  //   const renderItemSeparator = () => <Separator />;
-
-  //   const renderCoursesList = () => (
-  //     <FlatList
-  //       data={data}
-  //       renderItem={({ item }) => renderCoursesListItem(item)}
-  //       keyExtractor={item => item.id.toString()}
-  //       ItemSeparatorComponent={() => renderItemSeparator()}
-  //       ListFooterComponent={() => <Separator />}
-  //       ListHeaderComponent={() => <Separator />}
-  //       // extraData={this.state} // Flatlist re-render.
-  //     />
-  //   );
+  const user = 'Samuel Mataraso';
+  const email = 'samuelmataraso@gmail.com';
 
   return (
     <CollapsingToolbar headerTitle="Meus dados">
       <StatusBarManager />
-      <Content>{/*renderCoursesList()*/}</Content>
+      <Content>
+        <WrapperRectangle>
+          <IconUser name="user" size={size(30)} color={angelBlue} />
+          <WrapperText>
+            <TextInfo>{user}</TextInfo>
+          </WrapperText>
+        </WrapperRectangle>
+        <WrapperRectangle>
+          <IconEmail name="email" size={size(30)} color={angelBlue} />
+          <WrapperText>
+            <TextInfo>{email}</TextInfo>
+          </WrapperText>
+        </WrapperRectangle>
+        <WrapperRectangleLogout>
+          <IconLogout name="logout" size={size(30)} color={strawberry} />
+          <WrapperTextLogout>
+            <TextInfoLogout>Sair</TextInfoLogout>
+          </WrapperTextLogout>
+        </WrapperRectangleLogout>
+      </Content>
     </CollapsingToolbar>
   );
 };
