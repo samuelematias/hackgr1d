@@ -44,8 +44,8 @@ const DisableLabelButton = styled(LabelButton)`
 `;
 
 const WrapperLoading = styled.View`
-  padding-top: ${size(10)};
-  padding-bottom: ${size(3)};
+  /* padding-top: ${size(10)}; */
+  /* padding-bottom: ${size(3)}; */
   align-items: center;
   justify-content: center;
   flex: 1;

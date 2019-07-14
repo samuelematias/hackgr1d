@@ -1,10 +1,11 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import IconAmbulance from 'react-native-vector-icons/FontAwesome5';
 import IconCheck from 'react-native-vector-icons/Feather';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 import {
   widthPercentageToDP as wp,
@@ -162,9 +163,9 @@ export function coveringsDetailScreenConfig({ navigation }) {
   };
 }
 
-const CoveringsDetailScreen = () => {
-  // const { navigation } = props;
-  // const { navigate } = navigation;
+const CoveringsDetailScreen = props => {
+  const { navigation } = props;
+  const [loading, setLoading] = useState(false);
 
   const about = 'Caso você fique impossibilitado de exercer sua profissão,';
   const about1 = 'por causa de um aciente ou doença e Garante que,';
@@ -172,6 +173,20 @@ const CoveringsDetailScreen = () => {
   const about3 = 'Além disso, Oferece Indenização';
   const about4 = 'aos beneficiários caso ocorra morte acidental.';
   const aboutFull = `${about}${about1}${abou2}${about3}${about4}`;
+
+  const handleResetAction = () => {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'TabBarStack',
+          params: {},
+        }),
+      ],
+    });
+
+    return navigation.dispatch(resetAction);
+  };
 
   return (
     <Container>
@@ -206,10 +221,14 @@ const CoveringsDetailScreen = () => {
           <WrapperButton>
             <Button
               variant="enable"
-              onPress={() => {}}
+              onPress={() => {
+                setLoading(true);
+                setTimeout(() => handleResetAction(), 500);
+              }}
               labelText="Contratar"
               buttonColor={angelBlue}
               labelColor={white}
+              loading={loading}
             />
           </WrapperButton>
         </WrapperScrollView>
@@ -220,8 +239,8 @@ const CoveringsDetailScreen = () => {
 
 export default CoveringsDetailScreen;
 
-// CoveringsDetailScreen.propTypes = {
-//   navigation: PropTypes.objectOf(
-//     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-//   ).isRequired,
-// };
+CoveringsDetailScreen.propTypes = {
+  navigation: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  ).isRequired,
+};
