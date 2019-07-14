@@ -10,6 +10,7 @@ const colors = {
   overlay: 'rgba(0, 0, 0, .24)',
   fineBlack: '#1f2833',
   fineGrey: '#a0a0a0',
+  progressBlue: '#87CEFA',
 };
 
 export default colors;

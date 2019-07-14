@@ -8,8 +8,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-import { StatusBarManager, CollapsingToolbar } from '~/common/components';
-// import { Card } from '~/modules/courses/components';
+import { StatusBarManager, CollapsingToolbar, Card } from '~/common/components';
 
 const Content = styled.View`
   display: flex;
@@ -32,123 +31,50 @@ const CoveringsScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  //   const data = [
-  //     {
-  //       id: '1',
-  //       courseImage: 'https://i.imgur.com/pVJSPiF.png',
-  //       courseName: 'AutoCad',
-  //       date: '30/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '2',
-  //       courseImage: '',
-  //       courseName: 'Engenharia em 2019',
-  //       date: '03/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '3',
-  //       courseImage: 'https://i.imgur.com/mgGnMXH.png',
-  //       courseName: 'A:Z da Engenharia',
-  //       date: '05/05/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '4',
-  //       courseImage: '',
-  //       courseName: 'Por trás das Contruções',
-  //       date: '01/07/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: '',
-  //     },
-  //     {
-  //       id: '5',
-  //       courseImage: 'https://i.imgur.com/DDKBKAe.png',
-  //       courseName: 'Certificação de BIM',
-  //       date: '20/03/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '6',
-  //       courseImage: 'https://i.imgur.com/OiVthKM.png',
-  //       courseName: 'Oque é BIM?',
-  //       date: '14/04/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //   ];
+  const data = [
+    {
+      id: '1',
+      title: 'DIT',
+      about: 'Sobre o DIT.',
+      status: 'Em Progresso',
+    },
+  ];
 
-  //   const renderCoursesListItem = item => {
-  //     const {
-  //       courseImage,
-  //       courseName,
-  //       date,
-  //       author,
-  //       body,
-  //       courseLink,
-  //       videoLink,
-  //     } = item;
+  const renderCoveringsListItem = item => {
+    const { title, about, status } = item;
 
-  //     return (
-  //       <Card
-  //         courseImage={courseImage}
-  //         courseName={courseName}
-  //         date={date}
-  //         author={author}
-  //         onPress={() =>
-  //           navigate('CoursesDetailScreen', {
-  //             title: courseName,
-  //             author,
-  //             body,
-  //             videoLink,
-  //             courseLink,
-  //           })
-  //         }
-  //       />
-  //     );
-  //   };
+    return (
+      <Card
+        title={title}
+        about={about}
+        status={status}
+        onPress={() =>
+          navigate('', {
+            title,
+            about,
+          })
+        }
+      />
+    );
+  };
 
-  //   const renderItemSeparator = () => <Separator />;
+  const renderItemSeparator = () => <Separator />;
 
-  //   const renderCoursesList = () => (
-  //     <FlatList
-  //       data={data}
-  //       renderItem={({ item }) => renderCoursesListItem(item)}
-  //       keyExtractor={item => item.id.toString()}
-  //       ItemSeparatorComponent={() => renderItemSeparator()}
-  //       ListFooterComponent={() => <Separator />}
-  //       ListHeaderComponent={() => <Separator />}
-  //       // extraData={this.state} // Flatlist re-render.
-  //     />
-  //   );
+  const renderCoveringsList = () => (
+    <FlatList
+      data={data}
+      renderItem={({ item }) => renderCoveringsListItem(item)}
+      keyExtractor={item => item.id.toString()}
+      ItemSeparatorComponent={() => renderItemSeparator()}
+      ListFooterComponent={() => <Separator />}
+      ListHeaderComponent={() => <Separator />}
+    />
+  );
 
   return (
     <CollapsingToolbar headerTitle="Coberturas">
       <StatusBarManager />
-      <Content>{/*renderCoursesList()*/}</Content>
+      <Content>{renderCoveringsList()}</Content>
     </CollapsingToolbar>
   );
 };
