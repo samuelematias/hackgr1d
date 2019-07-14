@@ -140,7 +140,7 @@ const LossesScreen = props => {
   };
 
   return (
-    <CollapsingToolbar headerTitle="Coberturas">
+    <CollapsingToolbar headerTitle="Coberturas" headerLeftOn>
       <StatusBarManager />
       <Content>{chooseRender()}</Content>
     </CollapsingToolbar>

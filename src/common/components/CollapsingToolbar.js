@@ -3,11 +3,15 @@ import { Animated, Dimensions, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import { Colors, Metrics, Fonts } from '~/themes';
 
-const { white, black, lightGrey } = Colors;
+const { white, black, lightGrey, angelBlue } = Colors;
 const { type, typography } = Fonts;
 
 const { iPhoneXHelper, size } = Metrics;
@@ -72,6 +76,15 @@ const ScrollContainer = styled.ScrollView.attrs(props => ({
   margin-top: ${hp('2%')};
 `;
 
+const WrapperHeaderLeft = styled.TouchableOpacity`
+  flex: 1;
+  position: absolute;
+  top: ${hp('7%')};
+  right: ${wp('5%')};
+`;
+
+// const
+
 const styles = StyleSheet.create({
   TitleCollapse: {
     textAlign: 'center',
@@ -96,6 +109,7 @@ export default function CollapsingToolbar(props) {
     background,
     titleColor,
     scrollEnabled,
+    headerLeftOn,
   } = props;
 
   return (
@@ -117,6 +131,19 @@ export default function CollapsingToolbar(props) {
         >
           {headerTitle}
         </Animated.Text>
+        {headerLeftOn && (
+          <WrapperHeaderLeft
+            onPress={() => {}}
+            hitSlop={{
+              top: 10,
+              left: 10,
+              bottom: 10,
+              right: 10,
+            }}
+          >
+            <Icon name="plus" size={size(18)} color={angelBlue} />
+          </WrapperHeaderLeft>
+        )}
       </Header>
       <ScrollContainer
         scrollEnabled={scrollEnabled}
@@ -140,6 +167,7 @@ CollapsingToolbar.defaultProps = {
   background: white,
   titleColor: black,
   scrollEnabled: true,
+  headerLeftOn: false,
 };
 
 CollapsingToolbar.propTypes = {
@@ -150,4 +178,5 @@ CollapsingToolbar.propTypes = {
   background: PropTypes.string,
   titleColor: PropTypes.string,
   scrollEnabled: PropTypes.bool,
+  headerLeftOn: PropTypes.bool,
 };
