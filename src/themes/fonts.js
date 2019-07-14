@@ -56,25 +56,26 @@ function lineHeight(size) {
 }
 
 const type = {
-  // Example how use:
-  // ...Platform.select({
-  //   ios: {
-  //     robot: {
-  //       light: 'RobotoSlab-Light',
-  //       regular: 'RobotoSlab-Regular',
-  //       thin: 'RobotoSlab-Thin',
-  //       bold: 'RobotoSlab-Bold'
-  //     },
-  //   },
-  //   android: {
-  //     robot: {
-  //       light: 'RobotoSlab-Light',
-  //       regular: 'RobotoSlab-Regular',
-  //       thin: 'RobotoSlab-Thin',
-  //       bold: 'RobotoSlab-Bold'
-  //     },
-  //   }
-  // })
+  ...Platform.select({
+    ios: {
+      sf: {
+        light: 'SFProDisplay-Light',
+        regular: 'SFProDisplay-Regular',
+        medium: 'SFProDisplay-Medium',
+        bold: 'SFProDisplay-Bold',
+        semiBold: 'SFProDisplay-Semibold',
+      },
+    },
+    android: {
+      sf: {
+        light: 'SFProDisplay-Light',
+        regular: 'SFProDisplay-Regular',
+        medium: 'SFProDisplay-Medium',
+        bold: 'SFProDisplay-Bold',
+        semiBold: 'SFProDisplay-Semibold',
+      },
+    },
+  }),
 };
 
 const typography = {
@@ -87,23 +88,8 @@ const typography = {
   tiny: sizeNormalize(9),
 };
 
-const style = {
-  // Example how use:
-  // /**
-  //  * yourScreenFonts
-  //  */
-  // yourScreenFonts: {
-  //  styleExample: {
-  //    fontFamily: type.robot.light,
-  //    fontSize: size.medium,
-  //     lineHeight: lineHeight(20)
-  //  }
-  // },
-};
-
 export default {
   type,
   typography,
-  style,
   lineHeight,
 };
