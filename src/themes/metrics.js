@@ -127,4 +127,5 @@ export default {
   keyboardVerticalOffset,
   iPhoneXHelper,
   metrics,
+  width,
 };

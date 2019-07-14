@@ -23,6 +23,10 @@
       "error",
       { "extensions": [".js", ".jsx"] }
     ],
+    "react/prop-types": [
+      0,
+      { "ignore": "ignore", "customValidators": "customValidator" }
+    ],
     "import/prefer-default-export": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "react/jsx-one-expression-per-line": "off",
