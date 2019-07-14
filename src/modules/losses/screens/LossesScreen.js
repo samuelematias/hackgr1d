@@ -3,13 +3,20 @@ import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-import { StatusBarManager, CollapsingToolbar } from '~/common/components';
-// import { Card } from '~/modules/courses/components';
+import { StatusBarManager, CollapsingToolbar, Card } from '~/common/components';
+
+import { Metrics, Colors, Fonts } from '~/themes';
+
+const { size } = Metrics;
+const { fineGrey } = Colors;
+const { type, typography } = Fonts;
 
 const Content = styled.View`
   display: flex;
@@ -22,6 +29,39 @@ const Separator = styled.View`
   height: ${hp('2%')};
 `;
 
+const WrapperBlankState = styled.View`
+  flex: 1;
+  height: ${hp('60%')};
+  align-items: center;
+  justify-content: center;
+`;
+
+const WrapperBlankStateInfo = styled.View`
+  flex: 1;
+  padding-left: ${size(15)};
+  padding-right: ${size(15)};
+  align-items: center;
+  justify-content: center;
+`;
+
+const TextBlankState = styled.Text.attrs(() => ({
+  ellipsizeMode: 'tail',
+  numberOfLines: 2,
+}))`
+  text-align: center;
+  font-family: ${type.sf.medium};
+  font-size: ${typography.regular};
+  color: ${fineGrey};
+  font-weight: normal;
+  padding-bottom: ${size(20)};
+`;
+
+const WrapperImgBlankState = styled.View`
+  padding-bottom: ${size(20)};
+  align-items: center;
+  justify-content: center;
+`;
+
 export function lossesScreenConfig() {
   return {
     header: null,
@@ -32,123 +72,77 @@ const LossesScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  //   const data = [
-  //     {
-  //       id: '1',
-  //       courseImage: 'https://i.imgur.com/pVJSPiF.png',
-  //       courseName: 'AutoCad',
-  //       date: '30/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '2',
-  //       courseImage: '',
-  //       courseName: 'Engenharia em 2019',
-  //       date: '03/06/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '3',
-  //       courseImage: 'https://i.imgur.com/mgGnMXH.png',
-  //       courseName: 'A:Z da Engenharia',
-  //       date: '05/05/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '4',
-  //       courseImage: '',
-  //       courseName: 'Por trás das Contruções',
-  //       date: '01/07/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: '',
-  //     },
-  //     {
-  //       id: '5',
-  //       courseImage: 'https://i.imgur.com/DDKBKAe.png',
-  //       courseName: 'Certificação de BIM',
-  //       date: '20/03/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //     {
-  //       id: '6',
-  //       courseImage: 'https://i.imgur.com/OiVthKM.png',
-  //       courseName: 'Oque é BIM?',
-  //       date: '14/04/2019',
-  //       author: 'Eduardo Albuquerque',
-  //       body:
-  //         'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum',
-  //       courseLink: 'https://www.google.com',
-  //       videoLink: 'https://www.youtube.com/watch?v=4KkLuRFtuCc',
-  //     },
-  //   ];
+  const data = [];
 
-  //   const renderCoursesListItem = item => {
-  //     const {
-  //       courseImage,
-  //       courseName,
-  //       date,
-  //       author,
-  //       body,
-  //       courseLink,
-  //       videoLink,
-  //     } = item;
+  // const data = [
+  //   {
+  //     id: '1',
+  //     title: 'Sinistro',
+  //     about: 'Sobre o Sinistro.',
+  //     status: 'Em Progresso',
+  //   },
+  // ];
 
-  //     return (
-  //       <Card
-  //         courseImage={courseImage}
-  //         courseName={courseName}
-  //         date={date}
-  //         author={author}
-  //         onPress={() =>
-  //           navigate('CoursesDetailScreen', {
-  //             title: courseName,
-  //             author,
-  //             body,
-  //             videoLink,
-  //             courseLink,
-  //           })
-  //         }
-  //       />
-  //     );
-  //   };
+  const showList = data.length > 0;
 
-  //   const renderItemSeparator = () => <Separator />;
+  const renderLossessListItem = item => {
+    const { title, about, status } = item;
 
-  //   const renderCoursesList = () => (
-  //     <FlatList
-  //       data={data}
-  //       renderItem={({ item }) => renderCoursesListItem(item)}
-  //       keyExtractor={item => item.id.toString()}
-  //       ItemSeparatorComponent={() => renderItemSeparator()}
-  //       ListFooterComponent={() => <Separator />}
-  //       ListHeaderComponent={() => <Separator />}
-  //       // extraData={this.state} // Flatlist re-render.
-  //     />
-  //   );
+    return (
+      <Card
+        title={title}
+        about={about}
+        status={status}
+        typeCard="losse"
+        onPress={() =>
+          navigate('', {
+            title,
+            about,
+          })
+        }
+      />
+    );
+  };
+
+  const renderItemSeparator = () => <Separator />;
+
+  const renderLossessList = () => (
+    <FlatList
+      data={data}
+      renderItem={({ item }) => renderLossessListItem(item)}
+      keyExtractor={item => item.id.toString()}
+      ItemSeparatorComponent={() => renderItemSeparator()}
+      ListFooterComponent={() => <Separator />}
+      ListHeaderComponent={() => <Separator />}
+    />
+  );
+
+  const renderBlankState = () => (
+    <WrapperBlankState>
+      <WrapperBlankStateInfo>
+        <WrapperImgBlankState>
+          <Icon name="file-document" size={size(30)} color={fineGrey} />
+        </WrapperImgBlankState>
+        <TextBlankState>Ops!</TextBlankState>
+        <TextBlankState>Você aind não possui nenhum Sinistro.</TextBlankState>
+      </WrapperBlankStateInfo>
+    </WrapperBlankState>
+  );
+
+  const chooseRender = () => {
+    let returnChoosen;
+    if (showList) {
+      returnChoosen = renderLossessList();
+    } else {
+      returnChoosen = renderBlankState();
+    }
+    return returnChoosen;
+  };
 
   return (
-    <CollapsingToolbar headerTitle="Sinistros">
+    <CollapsingToolbar headerTitle="Coberturas">
       <StatusBarManager />
-      <Content>{/*renderCoursesList()*/}</Content>
+      <Content>{chooseRender()}</Content>
     </CollapsingToolbar>
   );
 };

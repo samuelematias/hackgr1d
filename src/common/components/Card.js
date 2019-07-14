@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import IconDoc from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
   widthPercentageToDP as wp,
@@ -68,7 +69,7 @@ const WrapperDetails = styled.View`
 `;
 
 const WrapperAbout = styled.View`
-  width: ${wp('20%')};
+  width: ${wp('78%')};
   justify-content: center;
   align-items: flex-start;
 `;
@@ -122,14 +123,18 @@ const WrapperInfo = styled.View`
 `;
 
 export default function Card(props) {
-  const { title, about, status, onPress } = props;
+  const { title, about, status, typeCard, onPress } = props;
 
   return (
     <Container>
       <ContentOnPress onPress={onPress ? () => onPress() : null}>
         <WrapperInfo>
           <WrapperImgCard>
-            <Icon name="ambulance" size={size(20)} color={angelBlue} />
+            {typeCard === 'losse' ? (
+              <IconDoc name="file-document" size={size(20)} color={angelBlue} />
+            ) : (
+              <Icon name="ambulance" size={size(20)} color={angelBlue} />
+            )}
           </WrapperImgCard>
           <CategoryBox color={status ? progressBlue : white}>
             <CategoryName>{status}</CategoryName>
@@ -157,5 +162,6 @@ Card.defaultProps = {
 Card.propTypes = {
   title: PropTypes.string,
   about: PropTypes.string,
+  typeCard: PropTypes.string.isRequired,
   onPress: PropTypes.func,
 };
