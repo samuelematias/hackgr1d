@@ -10,7 +10,7 @@ import { Metrics, Colors, Images, Fonts } from '~/themes';
 
 const { size, iPhoneXHelper, pw } = Metrics;
 const { white, black, angelBlue } = Colors;
-const { logo } = Images;
+const { imgScroll1, imgScroll2 } = Images;
 const { typography, type } = Fonts;
 
 const Container = styled.View`
@@ -63,18 +63,18 @@ const WrapperCarousel = styled.View`
 `;
 
 const WrapperCarouselTitle = styled.View`
-  margin-bottom: ${size(20)};
-  width: ${pw(60)};
+  padding-top: ${size(10)};
+  width: ${pw(80)};
   justify-content: center;
   align-items: center;
 `;
 
 const TitleCarousel = styled.Text.attrs(() => ({
   ellipsizeMode: 'tail',
-  numberOfLines: 2,
+  numberOfLines: 3,
 }))`
-  font-size: ${typography.small}px;
-  font-family: ${type.sf.bold};
+  font-size: ${typography.regular}px;
+  font-family: ${type.sf.light};
   color: ${black};
   text-align: center;
 `;
@@ -83,8 +83,8 @@ const ImgCarousel = styled.Image.attrs(() => ({
   resizeMode: 'contain',
   resizeMethod: 'resize',
 }))`
-  height: ${size(50)}px;
-  width: ${size(50)}px;
+  height: ${size(200)}px;
+  width: ${size(200)}px;
 `;
 
 const WrapperImgCarousel = styled.View.attrs(props => ({
@@ -122,18 +122,20 @@ const DashboardScreen = props => {
     const banners = [
       {
         id: '1',
-        cover: logo,
-        title: 'LOL KAPPA',
+        cover: imgScroll1,
+        title: 'Trabalhar no trânsito é difícil, nós sabemos.',
       },
       {
         id: '2',
-        cover: logo,
-        title: 'UHSAUSHAS',
+        cover: imgScroll2,
+        title:
+          'Com o Allie você tem acesso simples a seguros flexíveis que cabem no seu bolso.',
       },
       {
-        id: '1',
-        cover: logo,
-        title: 'HEHEHE XD',
+        id: '3',
+        cover: imgScroll1,
+        title:
+          'Assim, em poucos minutos, você pode se recuperar tranquilo, até estar pronto pras próximas corridas :)',
       },
     ];
     return (
@@ -164,7 +166,7 @@ const DashboardScreen = props => {
             labelText="Registrar"
           />
           <WrapperForgotPassword>
-            <TextForgotPassword>Já tem conta?</TextForgotPassword>
+            <TextForgotPassword>Ja possui conta?</TextForgotPassword>
             <WrapperLogin
               onPress={() => navigate('EmailScreen')}
               hitSlop={{
@@ -174,7 +176,7 @@ const DashboardScreen = props => {
                 right: 10,
               }}
             >
-              <TextForgotSignUp> Login</TextForgotSignUp>
+              <TextForgotSignUp> Faça o login.</TextForgotSignUp>
             </WrapperLogin>
           </WrapperForgotPassword>
         </WrapperButton>

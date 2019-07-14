@@ -135,7 +135,7 @@ const Navigation = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'TabBarStack',
+    initialRouteName: 'LoginStack',
     defaultNavigationOptions: {
       gesturesEnabled: false,
     },
