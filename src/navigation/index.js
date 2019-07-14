@@ -50,6 +50,10 @@ import CoveringsDetailScreen, {
   coveringsDetailScreenConfig,
 } from '~/modules/coverings/screens/CoveringsDetailScreen';
 
+import CreateLossesScreen, {
+  createLossesScreenConfig,
+} from '~/modules/losses/screens/CreateLossesScreen';
+
 const LoginStack = createStackNavigator(
   {
     DashboardScreen: {
@@ -124,12 +128,31 @@ const LossesStack = createStackNavigator(
       screen: LossesScreen,
       navigationOptions: lossesScreenConfig,
     },
+    CreateLossesScreen: {
+      screen: CreateLossesScreen,
+      navigationOptions: createLossesScreenConfig,
+    },
   },
   {
-    headerMode: 'none',
     initialRouteName: 'LossesScreen',
   },
 );
+
+LossesStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  const statsIsNotEmpty = navigation.state.index > 0;
+  const stateOnRoute1 = navigation.state.routes[1];
+  const route1Name = stateOnRoute1
+    ? stateOnRoute1.routeName === 'CreateLossesScreen'
+    : false;
+  if (statsIsNotEmpty && stateOnRoute1 && route1Name) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 
 const MyDataStack = createStackNavigator(
   {
@@ -188,7 +211,7 @@ const Navigation = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'TabBarStack',
+    initialRouteName: 'LoginStack',
     defaultNavigationOptions: {
       gesturesEnabled: false,
     },

@@ -74,15 +74,6 @@ const LossesScreen = props => {
 
   const data = [];
 
-  // const data = [
-  //   {
-  //     id: '1',
-  //     title: 'Sinistro',
-  //     about: 'Sobre o Sinistro.',
-  //     status: 'Em Progresso',
-  //   },
-  // ];
-
   const showList = data.length > 0;
 
   const renderLossessListItem = item => {
@@ -123,7 +114,7 @@ const LossesScreen = props => {
         <WrapperImgBlankState>
           <Icon name="file-document" size={size(30)} color={fineGrey} />
         </WrapperImgBlankState>
-        <TextBlankState>Ops!</TextBlankState>
+        <TextBlankState>Oba!</TextBlankState>
         <TextBlankState>Você aind não possui nenhum Sinistro.</TextBlankState>
       </WrapperBlankStateInfo>
     </WrapperBlankState>
@@ -140,7 +131,11 @@ const LossesScreen = props => {
   };
 
   return (
-    <CollapsingToolbar headerTitle="Coberturas" headerLeftOn>
+    <CollapsingToolbar
+      headerTitle="Sinistro"
+      headerLeftOn
+      onPress={() => navigation.navigate('CreateLossesScreen', {})}
+    >
       <StatusBarManager />
       <Content>{chooseRender()}</Content>
     </CollapsingToolbar>

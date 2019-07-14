@@ -208,12 +208,12 @@ const CoveringsDetailScreen = props => {
             <TextAprovalCriteria>Critérios de Aprovação</TextAprovalCriteria>
             <WrapperAprovalCriteria>
               <IconCheck name="check" size={size(18)} color={angelBlue} />
-              <TextAboutAprovalCriteria>Aged 21-65</TextAboutAprovalCriteria>
+              <TextAboutAprovalCriteria>Idade 21-65</TextAboutAprovalCriteria>
             </WrapperAprovalCriteria>
             <WrapperAprovalCriteria>
               <IconCheck name="check" size={size(18)} color={angelBlue} />
               <TextAboutAprovalCriteria>
-                Valor mínimo: R$ 1.000,00
+                Valor Parcial: R$ 1.000,00
               </TextAboutAprovalCriteria>
             </WrapperAprovalCriteria>
           </WrapperCriteria>

@@ -110,6 +110,7 @@ export default function CollapsingToolbar(props) {
     titleColor,
     scrollEnabled,
     headerLeftOn,
+    onPress,
   } = props;
 
   return (
@@ -133,7 +134,7 @@ export default function CollapsingToolbar(props) {
         </Animated.Text>
         {headerLeftOn && (
           <WrapperHeaderLeft
-            onPress={() => {}}
+            onPress={onPress ? () => onPress() : () => {}}
             hitSlop={{
               top: 10,
               left: 10,
@@ -168,6 +169,7 @@ CollapsingToolbar.defaultProps = {
   titleColor: black,
   scrollEnabled: true,
   headerLeftOn: false,
+  onPress: () => {},
 };
 
 CollapsingToolbar.propTypes = {
@@ -179,4 +181,5 @@ CollapsingToolbar.propTypes = {
   titleColor: PropTypes.string,
   scrollEnabled: PropTypes.bool,
   headerLeftOn: PropTypes.bool,
+  onPress: PropTypes.func,
 };
