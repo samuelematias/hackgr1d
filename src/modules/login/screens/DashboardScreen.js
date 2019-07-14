@@ -10,7 +10,7 @@ import { Metrics, Colors, Images, Fonts } from '~/themes';
 
 const { size, iPhoneXHelper, pw } = Metrics;
 const { white, black, angelBlue } = Colors;
-const { imgScroll1, imgScroll2 } = Images;
+const { imgScroll1, imgScroll2, imgScrol3 } = Images;
 const { typography, type } = Fonts;
 
 const Container = styled.View`
@@ -133,7 +133,7 @@ const DashboardScreen = props => {
       },
       {
         id: '3',
-        cover: imgScroll1,
+        cover: imgScrol3,
         title:
           'Assim, em poucos minutos, você pode se recuperar tranquilo, até estar pronto pras próximas corridas :)',
       },

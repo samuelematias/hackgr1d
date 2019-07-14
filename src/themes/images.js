@@ -9,6 +9,7 @@ const images = {
   iconLosses: require('~/assets/images/icons/icon-losses.png'),
   imgScroll1: require('~/assets/images/img-scroll-1.png'),
   imgScroll2: require('~/assets/images/img-scroll-2.png'),
+  imgScrol3: require('~/assets/images/gifs/img-scroll-3.gif'),
 };
 
 export default images;
