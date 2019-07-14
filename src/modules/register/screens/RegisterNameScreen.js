@@ -77,7 +77,7 @@ const WrapperOptions = styled.View`
   justify-content: center;
 `;
 
-export function loginEmailScreenConfig({ navigation }) {
+export function registerNameScreenConfig({ navigation }) {
   return {
     headerStyle: {
       backgroundColor: white,
@@ -104,15 +104,14 @@ export function loginEmailScreenConfig({ navigation }) {
   };
 }
 
-const LoginEmailScreen = props => {
+const RegisterNameScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
   const [inputValue, setInputValue] = useState('');
   const [autoFocusRef, setAutoFocusRef] = useState(false);
-
   const handleBackButton = () => true;
 
-  // Disable Android hardware back button on LoginEmailScreen
+  // Disable Android hardware back button on RegisterNameScreen
   useEffect(() => {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -133,15 +132,14 @@ const LoginEmailScreen = props => {
   };
 
   const handleOnSubmitEditing = () => {
+    setAutoFocusRef(false);
     if (inputValue) {
-      setAutoFocusRef(false);
-      navigate('LoginPasswordScreen', {
-        emailValue: inputValue,
+      navigate('RegisterPhoneScreen', {
+        nameValue: inputValue,
         onGoBack: () => handleAutoFocusRef(),
       });
     }
   };
-
   return (
     <Container>
       <SafeArea>
@@ -150,18 +148,17 @@ const LoginEmailScreen = props => {
           <Content>
             <WrapperTextHello>
               <TextRestaurantName>Olá,</TextRestaurantName>
-              <TextInfo>Informe seu E-mail</TextInfo>
+              <TextInfo>Cadastre seu Nome</TextInfo>
             </WrapperTextHello>
             <WrapperOptions>
               <WrapperInput>
                 <Input
                   autoFocusRef={autoFocusRef}
-                  inputType="email"
-                  label="E-mail"
+                  inputType="default"
+                  label="Nome"
                   autoFocus
-                  keyboardType="email-address"
+                  keyboardType="default"
                   returnKeyType="next"
-                  autoCompleteType="email"
                   callback={myInputCallback}
                   onSubmitEditing={() => handleOnSubmitEditing()}
                 />
@@ -184,9 +181,9 @@ const LoginEmailScreen = props => {
   );
 };
 
-export default LoginEmailScreen;
+export default RegisterNameScreen;
 
-LoginEmailScreen.propTypes = {
+RegisterNameScreen.propTypes = {
   navigation: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   ).isRequired,

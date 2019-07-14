@@ -175,6 +175,14 @@ export default function Input(props) {
       returnCallBack = callback({
         inputValue: value.length >= 4 ? value : false,
       });
+    } else if (inputType === 'default') {
+      returnCallBack = callback({
+        inputValue: value.length >= 4 ? value : false,
+      });
+    } else if (inputType === 'phone') {
+      returnCallBack = callback({
+        inputValue: value.length >= 16 ? value : false,
+      });
     } else {
       returnCallBack = null;
     }
@@ -224,7 +232,7 @@ export default function Input(props) {
     } else if (inputType === 'password') {
       returnAcessoryChosen = renderAccessoryPassword();
     } else {
-      returnAcessoryChosen = null;
+      returnAcessoryChosen = renderAccessoryCleanInput();
     }
     return returnAcessoryChosen;
   };
@@ -307,7 +315,8 @@ Input.defaultProps = {
   autoFocusRef: false,
 };
 Input.propTypes = {
-  inputType: PropTypes.oneOf(['email', 'password']).isRequired,
+  inputType: PropTypes.oneOf(['default', 'email', 'password', 'phone'])
+    .isRequired,
   keyboardType: PropTypes.oneOf([
     'default',
     'number-pad',

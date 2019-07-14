@@ -162,13 +162,13 @@ const DashboardScreen = props => {
         <WrapperButton>
           <Button
             variant="enable"
-            onPress={() => navigate('')}
+            onPress={() => navigate('RegisterNameScreen')}
             labelText="Registrar"
           />
           <WrapperForgotPassword>
             <TextForgotPassword>Ja possui conta?</TextForgotPassword>
             <WrapperLogin
-              onPress={() => navigate('EmailScreen')}
+              onPress={() => navigate('LoginEmailScreen')}
               hitSlop={{
                 top: 10,
                 left: 10,

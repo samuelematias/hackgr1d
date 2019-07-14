@@ -77,7 +77,7 @@ const WrapperOptions = styled.View`
   justify-content: center;
 `;
 
-export function loginEmailScreenConfig({ navigation }) {
+export function registerEmailScreenConfig({ navigation }) {
   return {
     headerStyle: {
       backgroundColor: white,
@@ -89,6 +89,7 @@ export function loginEmailScreenConfig({ navigation }) {
       <WrapperHeaderLeft
         onPress={() => {
           navigation.goBack();
+          navigation.state.params.onGoBack();
         }}
         hitSlop={{
           top: 10,
@@ -104,15 +105,17 @@ export function loginEmailScreenConfig({ navigation }) {
   };
 }
 
-const LoginEmailScreen = props => {
+const RegisterEmailScreen = props => {
   const { navigation } = props;
-  const { navigate } = navigation;
+  const { navigate, state } = navigation;
+  const { params } = state;
+  const { nameValue, phoneValue } = params;
   const [inputValue, setInputValue] = useState('');
   const [autoFocusRef, setAutoFocusRef] = useState(false);
 
   const handleBackButton = () => true;
 
-  // Disable Android hardware back button on LoginEmailScreen
+  // Disable Android hardware back button on RegisterEmailScreen
   useEffect(() => {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -135,7 +138,9 @@ const LoginEmailScreen = props => {
   const handleOnSubmitEditing = () => {
     if (inputValue) {
       setAutoFocusRef(false);
-      navigate('LoginPasswordScreen', {
+      navigate('RegisterPasswordScreen', {
+        nameValue,
+        phoneValue,
         emailValue: inputValue,
         onGoBack: () => handleAutoFocusRef(),
       });
@@ -149,8 +154,8 @@ const LoginEmailScreen = props => {
         <WrapperScrollView>
           <Content>
             <WrapperTextHello>
-              <TextRestaurantName>Olá,</TextRestaurantName>
-              <TextInfo>Informe seu E-mail</TextInfo>
+              <TextRestaurantName>Agora,</TextRestaurantName>
+              <TextInfo>Cadastre seu E-mail</TextInfo>
             </WrapperTextHello>
             <WrapperOptions>
               <WrapperInput>
@@ -184,9 +189,9 @@ const LoginEmailScreen = props => {
   );
 };
 
-export default LoginEmailScreen;
+export default RegisterEmailScreen;
 
-LoginEmailScreen.propTypes = {
+RegisterEmailScreen.propTypes = {
   navigation: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   ).isRequired,

@@ -77,7 +77,7 @@ const WrapperOptions = styled.View`
   justify-content: center;
 `;
 
-export function loginEmailScreenConfig({ navigation }) {
+export function RegisterPhoneScreenConfig({ navigation }) {
   return {
     headerStyle: {
       backgroundColor: white,
@@ -89,6 +89,7 @@ export function loginEmailScreenConfig({ navigation }) {
       <WrapperHeaderLeft
         onPress={() => {
           navigation.goBack();
+          navigation.state.params.onGoBack();
         }}
         hitSlop={{
           top: 10,
@@ -104,15 +105,16 @@ export function loginEmailScreenConfig({ navigation }) {
   };
 }
 
-const LoginEmailScreen = props => {
+const RegisterPhoneScreen = props => {
   const { navigation } = props;
-  const { navigate } = navigation;
-  const [inputValue, setInputValue] = useState('');
+  const { navigate, state } = navigation;
+  const { params } = state;
+  const { nameValue } = params;
   const [autoFocusRef, setAutoFocusRef] = useState(false);
-
+  const [inputValue, setInputValue] = useState('');
   const handleBackButton = () => true;
 
-  // Disable Android hardware back button on LoginEmailScreen
+  // Disable Android hardware back button on RegisterPhoneScreen
   useEffect(() => {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -135,8 +137,9 @@ const LoginEmailScreen = props => {
   const handleOnSubmitEditing = () => {
     if (inputValue) {
       setAutoFocusRef(false);
-      navigate('LoginPasswordScreen', {
-        emailValue: inputValue,
+      navigate('RegisterEmailScreen', {
+        nameValue,
+        phoneValue: inputValue,
         onGoBack: () => handleAutoFocusRef(),
       });
     }
@@ -149,19 +152,19 @@ const LoginEmailScreen = props => {
         <WrapperScrollView>
           <Content>
             <WrapperTextHello>
-              <TextRestaurantName>Olá,</TextRestaurantName>
-              <TextInfo>Informe seu E-mail</TextInfo>
+              <TextRestaurantName>Agora,</TextRestaurantName>
+              <TextInfo>Cadastre seu Telefone</TextInfo>
             </WrapperTextHello>
             <WrapperOptions>
               <WrapperInput>
                 <Input
                   autoFocusRef={autoFocusRef}
-                  inputType="email"
-                  label="E-mail"
+                  inputType="phone"
+                  label="Telefone"
                   autoFocus
-                  keyboardType="email-address"
+                  keyboardType="phone-pad"
                   returnKeyType="next"
-                  autoCompleteType="email"
+                  autoCompleteType="tel"
                   callback={myInputCallback}
                   onSubmitEditing={() => handleOnSubmitEditing()}
                 />
@@ -184,9 +187,9 @@ const LoginEmailScreen = props => {
   );
 };
 
-export default LoginEmailScreen;
+export default RegisterPhoneScreen;
 
-LoginEmailScreen.propTypes = {
+RegisterPhoneScreen.propTypes = {
   navigation: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   ).isRequired,

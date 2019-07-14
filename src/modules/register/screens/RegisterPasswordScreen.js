@@ -77,7 +77,7 @@ const WrapperOptions = styled.View`
   justify-content: center;
 `;
 
-export function loginEmailScreenConfig({ navigation }) {
+export function registerPasswordScreenConfig({ navigation }) {
   return {
     headerStyle: {
       backgroundColor: white,
@@ -89,6 +89,7 @@ export function loginEmailScreenConfig({ navigation }) {
       <WrapperHeaderLeft
         onPress={() => {
           navigation.goBack();
+          navigation.state.params.onGoBack();
         }}
         hitSlop={{
           top: 10,
@@ -104,15 +105,17 @@ export function loginEmailScreenConfig({ navigation }) {
   };
 }
 
-const LoginEmailScreen = props => {
+const RegisterPasswordScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
+  // const { navigate, state } = navigation;
+  // const { params } = state;
+  // const { emailValue, nameValue, phoneValue } = params;
   const [inputValue, setInputValue] = useState('');
-  const [autoFocusRef, setAutoFocusRef] = useState(false);
-
+  // const [autoFocusRef, setAutoFocusRef] = useState(false);
   const handleBackButton = () => true;
 
-  // Disable Android hardware back button on LoginEmailScreen
+  // Disable Android hardware back button on RegisterPasswordScreen
   useEffect(() => {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -124,9 +127,9 @@ const LoginEmailScreen = props => {
     };
   }, []);
 
-  function handleAutoFocusRef() {
-    return setAutoFocusRef(true);
-  }
+  // function handleAutoFocusRef() {
+  //   return setAutoFocusRef(true);
+  // }
 
   const myInputCallback = dataFromChild => {
     setInputValue(dataFromChild.inputValue);
@@ -134,10 +137,13 @@ const LoginEmailScreen = props => {
 
   const handleOnSubmitEditing = () => {
     if (inputValue) {
-      setAutoFocusRef(false);
-      navigate('LoginPasswordScreen', {
-        emailValue: inputValue,
-        onGoBack: () => handleAutoFocusRef(),
+      // setAutoFocusRef(false);
+      navigate('TabBarStack', {
+        // nameValue,
+        // phoneValue,
+        // emailValue,
+        // passwordValue: inputValue,
+        // onGoBack: () => handleAutoFocusRef(),
       });
     }
   };
@@ -149,19 +155,18 @@ const LoginEmailScreen = props => {
         <WrapperScrollView>
           <Content>
             <WrapperTextHello>
-              <TextRestaurantName>Olá,</TextRestaurantName>
-              <TextInfo>Informe seu E-mail</TextInfo>
+              <TextRestaurantName>Agora,</TextRestaurantName>
+              <TextInfo>Cadastre sua Senha</TextInfo>
             </WrapperTextHello>
             <WrapperOptions>
               <WrapperInput>
                 <Input
-                  autoFocusRef={autoFocusRef}
-                  inputType="email"
-                  label="E-mail"
+                  // autoFocusRef={autoFocusRef}
+                  inputType="password"
+                  label="Senha"
                   autoFocus
-                  keyboardType="email-address"
-                  returnKeyType="next"
-                  autoCompleteType="email"
+                  keyboardType="default"
+                  autoCompleteType="password"
                   callback={myInputCallback}
                   onSubmitEditing={() => handleOnSubmitEditing()}
                 />
@@ -170,7 +175,7 @@ const LoginEmailScreen = props => {
                 <Button
                   variant="enable"
                   onPress={() => handleOnSubmitEditing()}
-                  labelText="Continuar"
+                  labelText="Entrar"
                   buttonColor={inputValue ? angelBlue : lightGrey}
                   labelColor={inputValue ? white : mediumGrey}
                   isDisabled={!inputValue && true}
@@ -184,9 +189,9 @@ const LoginEmailScreen = props => {
   );
 };
 
-export default LoginEmailScreen;
+export default RegisterPasswordScreen;
 
-LoginEmailScreen.propTypes = {
+RegisterPasswordScreen.propTypes = {
   navigation: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   ).isRequired,

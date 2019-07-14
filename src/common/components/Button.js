@@ -60,10 +60,12 @@ export default function Button(props) {
     labelColor,
     widthSquareButton,
     loading,
+    isDisabled,
   } = props;
   const renderSquareButton = () => (
     <SquareButton
       onPress={onPress ? () => onPress() : null}
+      disabled={isDisabled}
       buttonColor={buttonColor}
       hitSlop={{
         top: 10,
@@ -98,6 +100,7 @@ export default function Button(props) {
   const renderFullButton = () => (
     <FullButton
       onPress={onPress ? () => onPress() : null}
+      disabled={isDisabled}
       buttonColor={buttonColor}
       hitSlop={{
         top: 10,
@@ -138,6 +141,7 @@ Button.defaultProps = {
   disabledLabelColor: mediumGrey,
   widthSquareButton: `${pw(85)}px`,
   loading: false,
+  isDisabled: false,
 };
 Button.propTypes = {
   variant: PropTypes.oneOf(['enable', 'disable', 'full']).isRequired,
@@ -147,4 +151,5 @@ Button.propTypes = {
   labelColor: PropTypes.string,
   widthSquareButton: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   loading: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };

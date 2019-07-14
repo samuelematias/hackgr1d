@@ -6,8 +6,6 @@ import {
 
 import { Authentication, TabBar } from '~/common/components';
 
-// import HomeScreen from '~/modules/home/screens/HomeScreen';
-
 import DashboardScreen, {
   dashboardScreenConfig,
 } from '~/modules/login/screens/DashboardScreen';
@@ -19,6 +17,22 @@ import LoginEmailScreen, {
 import LoginPasswordScreen, {
   loginPasswordScreenConfig,
 } from '~/modules/login/screens/LoginPasswordScreen';
+
+import RegisterNameScreen, {
+  registerNameScreenConfig,
+} from '~/modules/register/screens/RegisterNameScreen';
+
+import RegisterPhoneScreen, {
+  RegisterPhoneScreenConfig,
+} from '~/modules/register/screens/RegisterPhoneScreen';
+
+import RegisterEmailScreen, {
+  registerEmailScreenConfig,
+} from '~/modules/register/screens/RegisterEmailScreen';
+
+import RegisterPasswordScreen, {
+  registerPasswordScreenConfig,
+} from '~/modules/register/screens/RegisterPasswordScreen';
 
 import CoveringsScreen, {
   coveringsScreenConfig,
@@ -38,13 +52,29 @@ const LoginStack = createStackNavigator(
       screen: DashboardScreen,
       navigationOptions: dashboardScreenConfig,
     },
-    EmailScreen: {
+    LoginEmailScreen: {
       screen: LoginEmailScreen,
       navigationOptions: loginEmailScreenConfig,
     },
-    PasswordScreen: {
+    LoginPasswordScreen: {
       screen: LoginPasswordScreen,
       navigationOptions: loginPasswordScreenConfig,
+    },
+    RegisterNameScreen: {
+      screen: RegisterNameScreen,
+      navigationOptions: registerNameScreenConfig,
+    },
+    RegisterPhoneScreen: {
+      screen: RegisterPhoneScreen,
+      navigationOptions: RegisterPhoneScreenConfig,
+    },
+    RegisterEmailScreen: {
+      screen: RegisterEmailScreen,
+      navigationOptions: registerEmailScreenConfig,
+    },
+    RegisterPasswordScreen: {
+      screen: RegisterPasswordScreen,
+      navigationOptions: registerPasswordScreenConfig,
     },
   },
   {
