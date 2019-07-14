@@ -166,8 +166,12 @@ const CoveringsDetailScreen = () => {
   // const { navigation } = props;
   // const { navigate } = navigation;
 
-  const about =
-    'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum';
+  const about = 'Caso você fique impossibilitado de exercer sua profissão,';
+  const about1 = 'por causa de um aciente ou doença e Garante que,';
+  const abou2 = 'receberá um valor para cada dia que não puder trabalhar. ';
+  const about3 = 'Além disso, Oferece Indenização';
+  const about4 = 'aos beneficiários caso ocorra morte acidental.';
+  const aboutFull = `${about}${about1}${abou2}${about3}${about4}`;
 
   return (
     <Container>
@@ -182,7 +186,7 @@ const CoveringsDetailScreen = () => {
               <TextWhatWeOffer>Oque oferecemos?</TextWhatWeOffer>
             </WrapperWhatWeOffer>
             <WrapperAboutWhatWeOffer>
-              <TextAboutWhatWeOffer>{about}</TextAboutWhatWeOffer>
+              <TextAboutWhatWeOffer>{aboutFull}</TextAboutWhatWeOffer>
             </WrapperAboutWhatWeOffer>
           </WrapperAbout>
           <WrapperCriteria>
@@ -190,6 +194,12 @@ const CoveringsDetailScreen = () => {
             <WrapperAprovalCriteria>
               <IconCheck name="check" size={size(18)} color={angelBlue} />
               <TextAboutAprovalCriteria>Aged 21-65</TextAboutAprovalCriteria>
+            </WrapperAprovalCriteria>
+            <WrapperAprovalCriteria>
+              <IconCheck name="check" size={size(18)} color={angelBlue} />
+              <TextAboutAprovalCriteria>
+                Valor mínimo: R$ 1.000,00
+              </TextAboutAprovalCriteria>
             </WrapperAprovalCriteria>
           </WrapperCriteria>
 
