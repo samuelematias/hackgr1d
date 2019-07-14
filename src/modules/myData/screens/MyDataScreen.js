@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import IconUser from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialIcons';
 import IconLogout from 'react-native-vector-icons/SimpleLineIcons';
 import { NavigationActions, StackActions } from 'react-navigation';
@@ -65,7 +65,7 @@ const WrapperRectangleLogout = styled.TouchableOpacity`
   border-bottom-width: 1;
   align-items: center;
   justify-content: flex-start;
-  margin-top: ${hp('25%')};
+  margin-top: ${hp('10%')};
 `;
 
 const WrapperTextLogout = styled.View`
@@ -96,6 +96,7 @@ const MyDataScreen = props => {
 
   const user = 'Samuel Mataraso';
   const email = 'samuelmataraso@gmail.com';
+  const credit = '**** **** **** 1144';
 
   const handleResetAction = () => {
     const resetAction = StackActions.reset({
@@ -116,7 +117,7 @@ const MyDataScreen = props => {
       <StatusBarManager />
       <Content>
         <WrapperRectangle>
-          <IconUser name="user" size={size(30)} color={angelBlue} />
+          <Icon name="user" size={size(30)} color={angelBlue} />
           <WrapperText>
             <TextInfo>{user}</TextInfo>
           </WrapperText>
@@ -125,6 +126,12 @@ const MyDataScreen = props => {
           <IconEmail name="email" size={size(30)} color={angelBlue} />
           <WrapperText>
             <TextInfo>{email}</TextInfo>
+          </WrapperText>
+        </WrapperRectangle>
+        <WrapperRectangle>
+          <Icon name="credit-card" size={size(30)} color={angelBlue} />
+          <WrapperText>
+            <TextInfo>{credit}</TextInfo>
           </WrapperText>
         </WrapperRectangle>
         <WrapperRectangleLogout onPress={() => handleResetAction()}>
