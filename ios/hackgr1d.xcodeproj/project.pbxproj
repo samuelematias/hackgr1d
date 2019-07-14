@@ -62,6 +62,11 @@
 		F8D5548F53E041E8A9CE5760 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6F46B0EEAF740B5AFFBCC18 /* Octicons.ttf */; };
 		235A9AB82FA2419BB36C9CA5 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3166A282F26D41868F3F6FCC /* SimpleLineIcons.ttf */; };
 		2B3FDBC739F540539AA3110B /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE9DB27924543F5B5122576 /* Zocial.ttf */; };
+		73929DE3F499437F92203D34 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6EB826F0F46AD9C4A4BEA /* SFProDisplay-Bold.ttf */; };
+		54CAB4C0401D4DA39C752D43 /* SFProDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCA0F678A913405795CEAA35 /* SFProDisplay-Light.ttf */; };
+		49773CC6CB8645D8A54BB608 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4102FC1BAC434383A29DBAE2 /* SFProDisplay-Medium.ttf */; };
+		3A405D9D2FB4403BB2D71385 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B1B3421AEA44D89AFB29643 /* SFProDisplay-Regular.ttf */; };
+		6B5688481A4F4C84B4CA6D82 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAB3E9D12944B88BB59A734 /* SFProDisplay-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +401,11 @@
 		D6F46B0EEAF740B5AFFBCC18 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		3166A282F26D41868F3F6FCC /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		ACE9DB27924543F5B5122576 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4EF6EB826F0F46AD9C4A4BEA /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; name = "SFProDisplay-Bold.ttf"; path = "../src/assets/fonts/SFProDisplay-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BCA0F678A913405795CEAA35 /* SFProDisplay-Light.ttf */ = {isa = PBXFileReference; name = "SFProDisplay-Light.ttf"; path = "../src/assets/fonts/SFProDisplay-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4102FC1BAC434383A29DBAE2 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; name = "SFProDisplay-Medium.ttf"; path = "../src/assets/fonts/SFProDisplay-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9B1B3421AEA44D89AFB29643 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; name = "SFProDisplay-Regular.ttf"; path = "../src/assets/fonts/SFProDisplay-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8EAB3E9D12944B88BB59A734 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; name = "SFProDisplay-Semibold.ttf"; path = "../src/assets/fonts/SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,6 +701,11 @@
 				D6F46B0EEAF740B5AFFBCC18 /* Octicons.ttf */,
 				3166A282F26D41868F3F6FCC /* SimpleLineIcons.ttf */,
 				ACE9DB27924543F5B5122576 /* Zocial.ttf */,
+				4EF6EB826F0F46AD9C4A4BEA /* SFProDisplay-Bold.ttf */,
+				BCA0F678A913405795CEAA35 /* SFProDisplay-Light.ttf */,
+				4102FC1BAC434383A29DBAE2 /* SFProDisplay-Medium.ttf */,
+				9B1B3421AEA44D89AFB29643 /* SFProDisplay-Regular.ttf */,
+				8EAB3E9D12944B88BB59A734 /* SFProDisplay-Semibold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1158,6 +1173,11 @@
 				F8D5548F53E041E8A9CE5760 /* Octicons.ttf in Resources */,
 				235A9AB82FA2419BB36C9CA5 /* SimpleLineIcons.ttf in Resources */,
 				2B3FDBC739F540539AA3110B /* Zocial.ttf in Resources */,
+				73929DE3F499437F92203D34 /* SFProDisplay-Bold.ttf in Resources */,
+				54CAB4C0401D4DA39C752D43 /* SFProDisplay-Light.ttf in Resources */,
+				49773CC6CB8645D8A54BB608 /* SFProDisplay-Medium.ttf in Resources */,
+				3A405D9D2FB4403BB2D71385 /* SFProDisplay-Regular.ttf in Resources */,
+				6B5688481A4F4C84B4CA6D82 /* SFProDisplay-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
