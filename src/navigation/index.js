@@ -20,6 +20,18 @@ import PasswordScreen, {
   passwordScreenConfig,
 } from '~/modules/login/screens/PasswordScreen';
 
+import CoveringsScreen, {
+  coveringsScreenConfig,
+} from '~/modules/coverings/screens/CoveringsScreen';
+
+import LossesScreen, {
+  lossesScreenConfig,
+} from '~/modules/losses/screens/LossesScreen';
+
+import MyDataScreen, {
+  myDataScreenConfig,
+} from '~/modules/myData/screens/MyDataScreen';
+
 const LoginStack = createStackNavigator(
   {
     DashboardScreen: {
@@ -40,27 +52,59 @@ const LoginStack = createStackNavigator(
   },
 );
 
-// const HomeStack = createStackNavigator(
-//   {
-//     HomeScreen: { screen: HomeScreen },
-//   },
-//   {
-//     headerMode: 'none',
-//     initialRouteName: 'HomeScreen',
-//   },
-// );
+const CoveringsStack = createStackNavigator(
+  {
+    CoveringsScreen: { screen: CoveringsScreen },
+  },
+  {
+    headerMode: 'none',
+    initialRouteName: 'CoveringsScreen',
+  },
+);
+
+const LossesStack = createStackNavigator(
+  {
+    LossesScreen: { screen: LossesScreen },
+  },
+  {
+    headerMode: 'none',
+    initialRouteName: 'LossesScreen',
+  },
+);
+
+const MyDataStack = createStackNavigator(
+  {
+    MyDataScreen: { screen: MyDataScreen },
+  },
+  {
+    headerMode: 'none',
+    initialRouteName: 'MyDataScreen',
+  },
+);
 
 const TabBarStack = createBottomTabNavigator(
   {
-    LoginStack: {
-      screen: LoginStack,
+    CoveringsStack: {
+      screen: CoveringsStack,
       navigationOptions: {
-        title: 'Seguros',
+        title: 'Coberturas',
+      },
+    },
+    LossesStack: {
+      screen: LossesStack,
+      navigationOptions: {
+        title: 'Sinistros',
+      },
+    },
+    MyDataStack: {
+      screen: MyDataStack,
+      navigationOptions: {
+        title: 'Meus dados',
       },
     },
   },
   {
-    initialRouteName: 'LoginStack',
+    initialRouteName: 'CoveringsStack',
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => TabBar.tabBarIcon(focused, navigation),
       tabBarOptions: TabBar.tabBarOptions(),

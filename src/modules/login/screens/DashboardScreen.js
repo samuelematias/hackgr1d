@@ -157,7 +157,7 @@ const DashboardScreen = props => {
         <WrapperButton>
           <Button
             variant="enable"
-            onPress={() => navigate('EmailScreen')}
+            onPress={() => navigate('')}
             labelText="Registrar"
           />
           <WrapperForgotPassword>

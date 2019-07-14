@@ -35,15 +35,15 @@ function tabBarIcon(focused, navigation) {
   const { routeName } = navigation.state;
   const tabBarIconColor = focused ? angelBlue : fineGrey;
   let returnTabBarIcon;
-  if (routeName === 'tab1Stack') {
+  if (routeName === 'CoveringsStack') {
     returnTabBarIcon = (
       <Icon name="news" size={size(18)} color={tabBarIconColor} />
     );
-  } else if (routeName === 'tab2Stack') {
+  } else if (routeName === 'LossesStack') {
     returnTabBarIcon = (
       <Icon name="open-book" size={size(18)} color={tabBarIconColor} />
     );
-  } else if (routeName === 'tab3Stack') {
+  } else if (routeName === 'MyDataStack') {
     returnTabBarIcon = (
       <Icon name="user" size={size(18)} color={tabBarIconColor} />
     );

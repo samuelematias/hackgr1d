@@ -129,7 +129,7 @@ const PasswordScreen = props => {
 
   const handleOnSubmitEditing = () => {
     if (inputValue) {
-      navigate('', {
+      navigate('TabBarStack', {
         // emailValue: inputValue,
       });
     }
