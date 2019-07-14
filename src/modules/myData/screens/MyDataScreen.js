@@ -9,6 +9,7 @@ import {
 import IconUser from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialIcons';
 import IconLogout from 'react-native-vector-icons/SimpleLineIcons';
+import IconCreditCard from 'react-native-vector-icons/FontAwesome';
 
 import { StatusBarManager, CollapsingToolbar } from '~/common/components';
 
@@ -65,7 +66,7 @@ const WrapperRectangleLogout = styled.TouchableOpacity`
   border-bottom-width: 1;
   align-items: center;
   justify-content: flex-start;
-  margin-top: ${hp('25%')};
+  margin-top: ${hp('10%')};
 `;
 
 const WrapperTextLogout = styled.View`
@@ -98,6 +99,7 @@ const MyDataScreen = () => {
 
   const user = 'Samuel Mataraso';
   const email = 'samuelmataraso@gmail.com';
+  const credit = '**** **** **** 1144';
 
   return (
     <CollapsingToolbar headerTitle="Meus dados">
@@ -113,6 +115,16 @@ const MyDataScreen = () => {
           <IconEmail name="email" size={size(30)} color={angelBlue} />
           <WrapperText>
             <TextInfo>{email}</TextInfo>
+          </WrapperText>
+        </WrapperRectangle>
+        <WrapperRectangle>
+          <IconCreditCard
+            name="credit-card"
+            size={size(30)}
+            color={angelBlue}
+          />
+          <WrapperText>
+            <TextInfo>{credit}</TextInfo>
           </WrapperText>
         </WrapperRectangle>
         <WrapperRectangleLogout>
