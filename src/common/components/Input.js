@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
 import { TextInput } from 'react-native-paper';
+import VMasker from 'vanilla-masker';
 
 import { Regexs } from '~/common/utils';
 import { Metrics, Colors, Images, Fonts } from '~/themes';
@@ -191,8 +192,14 @@ export default function Input(props) {
   };
 
   const handleOnChangeText = value => {
-    setInputValue(value);
-    handleCallbackFromParent(value);
+    if (inputType === 'phone') {
+      const phone = VMasker.toPattern(value, '(99) 9 9999-9999');
+      setInputValue(phone);
+      handleCallbackFromParent(phone);
+    } else {
+      setInputValue(value);
+      handleCallbackFromParent(value);
+    }
   };
 
   const renderAccessoryCleanInput = () => (

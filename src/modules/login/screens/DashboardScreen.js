@@ -129,7 +129,7 @@ const DashboardScreen = props => {
         id: '2',
         cover: imgScroll2,
         title:
-          'Com o Allie você tem acesso simples a seguros flexíveis que cabem no seu bolso.',
+          'Com o Vally você tem acesso simples a seguros flexíveis que cabem no seu bolso.',
       },
       {
         id: '3',
