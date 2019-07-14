@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import styled from 'styled-components/native';
 import {
@@ -92,9 +92,9 @@ export function myDataScreenConfig() {
   };
 }
 
-const MyDataScreen = props => {
-  const { navigation } = props;
-  const { navigate } = navigation;
+const MyDataScreen = () => {
+  // const { navigation } = props;
+  // const { navigate } = navigation;
 
   const user = 'Samuel Mataraso';
   const email = 'samuelmataraso@gmail.com';
@@ -128,8 +128,8 @@ const MyDataScreen = props => {
 
 export default MyDataScreen;
 
-MyDataScreen.propTypes = {
-  navigation: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  ).isRequired,
-};
+// MyDataScreen.propTypes = {
+//   navigation: PropTypes.objectOf(
+//     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+//   ).isRequired,
+// };
