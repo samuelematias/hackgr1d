@@ -77,7 +77,7 @@ const WrapperOptions = styled.View`
   justify-content: center;
 `;
 
-export function passwordScreenConfig({ navigation }) {
+export function loginEmailScreenConfig({ navigation }) {
   return {
     headerStyle: {
       backgroundColor: white,
@@ -89,7 +89,6 @@ export function passwordScreenConfig({ navigation }) {
       <WrapperHeaderLeft
         onPress={() => {
           navigation.goBack();
-          navigation.state.params.onGoBack();
         }}
         hitSlop={{
           top: 10,
@@ -105,13 +104,15 @@ export function passwordScreenConfig({ navigation }) {
   };
 }
 
-const PasswordScreen = props => {
+const LoginEmailScreen = props => {
   const { navigation } = props;
   const { navigate } = navigation;
   const [inputValue, setInputValue] = useState('');
+  const [autoFocusRef, setAutoFocusRef] = useState(false);
+
   const handleBackButton = () => true;
 
-  // Disable Android hardware back button on PasswordScreen
+  // Disable Android hardware back button on LoginEmailScreen
   useEffect(() => {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', handleBackButton);
@@ -123,14 +124,20 @@ const PasswordScreen = props => {
     };
   }, []);
 
+  function handleAutoFocusRef() {
+    return setAutoFocusRef(true);
+  }
+
   const myInputCallback = dataFromChild => {
     setInputValue(dataFromChild.inputValue);
   };
 
   const handleOnSubmitEditing = () => {
     if (inputValue) {
-      navigate('TabBarStack', {
-        // emailValue: inputValue,
+      setAutoFocusRef(false);
+      navigate('PasswordScreen', {
+        emailValue: inputValue,
+        onGoBack: () => handleAutoFocusRef(),
       });
     }
   };
@@ -142,17 +149,19 @@ const PasswordScreen = props => {
         <WrapperScrollView>
           <Content>
             <WrapperTextHello>
-              <TextRestaurantName>Agora,</TextRestaurantName>
-              <TextInfo>Informe sua Senha</TextInfo>
+              <TextRestaurantName>Olá,</TextRestaurantName>
+              <TextInfo>Informe seu E-mail</TextInfo>
             </WrapperTextHello>
             <WrapperOptions>
               <WrapperInput>
                 <Input
-                  inputType="password"
-                  label="Senha"
+                  autoFocusRef={autoFocusRef}
+                  inputType="email"
+                  label="E-mail"
                   autoFocus
-                  keyboardType="default"
-                  autoCompleteType="password"
+                  keyboardType="email-address"
+                  returnKeyType="next"
+                  autoCompleteType="email"
                   callback={myInputCallback}
                   onSubmitEditing={() => handleOnSubmitEditing()}
                 />
@@ -161,7 +170,7 @@ const PasswordScreen = props => {
                 <Button
                   variant="enable"
                   onPress={() => handleOnSubmitEditing()}
-                  labelText="Entrar"
+                  labelText="Continuar"
                   buttonColor={inputValue ? angelBlue : lightGrey}
                   labelColor={inputValue ? white : mediumGrey}
                   isDisabled={!inputValue && true}
@@ -175,9 +184,9 @@ const PasswordScreen = props => {
   );
 };
 
-export default PasswordScreen;
+export default LoginEmailScreen;
 
-PasswordScreen.propTypes = {
+LoginEmailScreen.propTypes = {
   navigation: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   ).isRequired,

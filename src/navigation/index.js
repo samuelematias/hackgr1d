@@ -12,13 +12,13 @@ import DashboardScreen, {
   dashboardScreenConfig,
 } from '~/modules/login/screens/DashboardScreen';
 
-import EmailScreen, {
-  emailScreenConfig,
-} from '~/modules/login/screens/EmailScreen';
+import LoginEmailScreen, {
+  loginEmailScreenConfig,
+} from '~/modules/login/screens/LoginEmailScreen';
 
-import PasswordScreen, {
-  passwordScreenConfig,
-} from '~/modules/login/screens/PasswordScreen';
+import LoginPasswordScreen, {
+  loginPasswordScreenConfig,
+} from '~/modules/login/screens/LoginPasswordScreen';
 
 import CoveringsScreen, {
   coveringsScreenConfig,
@@ -39,12 +39,12 @@ const LoginStack = createStackNavigator(
       navigationOptions: dashboardScreenConfig,
     },
     EmailScreen: {
-      screen: EmailScreen,
-      navigationOptions: emailScreenConfig,
+      screen: LoginEmailScreen,
+      navigationOptions: loginEmailScreenConfig,
     },
     PasswordScreen: {
-      screen: PasswordScreen,
-      navigationOptions: passwordScreenConfig,
+      screen: LoginPasswordScreen,
+      navigationOptions: loginPasswordScreenConfig,
     },
   },
   {
