@@ -146,7 +146,7 @@ const CoveringsScreen = props => {
   //   );
 
   return (
-    <CollapsingToolbar headerTitle="Tab1">
+    <CollapsingToolbar headerTitle="Coberturas">
       <StatusBarManager />
       <Content>{/*renderCoursesList()*/}</Content>
     </CollapsingToolbar>

@@ -79,7 +79,10 @@ const TitleCarousel = styled.Text.attrs(() => ({
   text-align: center;
 `;
 
-const ImgCarousel = styled.Image`
+const ImgCarousel = styled.Image.attrs(() => ({
+  resizeMode: 'contain',
+  resizeMethod: 'resize',
+}))`
   height: ${size(50)}px;
   width: ${size(50)}px;
 `;

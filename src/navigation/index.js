@@ -54,7 +54,10 @@ const LoginStack = createStackNavigator(
 
 const CoveringsStack = createStackNavigator(
   {
-    CoveringsScreen: { screen: CoveringsScreen },
+    CoveringsScreen: {
+      screen: CoveringsScreen,
+      navigationOptions: coveringsScreenConfig,
+    },
   },
   {
     headerMode: 'none',
@@ -64,7 +67,10 @@ const CoveringsStack = createStackNavigator(
 
 const LossesStack = createStackNavigator(
   {
-    LossesScreen: { screen: LossesScreen },
+    LossesScreen: {
+      screen: LossesScreen,
+      navigationOptions: lossesScreenConfig,
+    },
   },
   {
     headerMode: 'none',
@@ -74,7 +80,10 @@ const LossesStack = createStackNavigator(
 
 const MyDataStack = createStackNavigator(
   {
-    MyDataScreen: { screen: MyDataScreen },
+    MyDataScreen: {
+      screen: MyDataScreen,
+      navigationOptions: myDataScreenConfig,
+    },
   },
   {
     headerMode: 'none',
@@ -126,7 +135,7 @@ const Navigation = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'LoginStack',
+    initialRouteName: 'TabBarStack',
     defaultNavigationOptions: {
       gesturesEnabled: false,
     },

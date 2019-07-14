@@ -1,13 +1,22 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Entypo';
+import styled from 'styled-components/native';
 
-import { Colors, Fonts, Metrics } from '~/themes';
+import { Colors, Fonts, Metrics, Images } from '~/themes';
 
-const { white, angelBlue, fineBlack, fineGrey } = Colors;
+const { white, fineBlack, fineGrey } = Colors;
 const { type, typography } = Fonts;
 const { size } = Metrics;
+const { iconCoverings, iconMyData, iconLosses } = Images;
+
+const WrapperTaBarIcon = styled.Image.attrs(() => ({
+  resizeMode: 'contain',
+  resizeMethod: 'resize',
+}))`
+  width: ${size(22)};
+  height: ${size(22)};
+`;
 
 const styles = StyleSheet.create({
   tabBarLabel: {
@@ -33,20 +42,13 @@ const styles = StyleSheet.create({
 
 function tabBarIcon(focused, navigation) {
   const { routeName } = navigation.state;
-  const tabBarIconColor = focused ? angelBlue : fineGrey;
   let returnTabBarIcon;
   if (routeName === 'CoveringsStack') {
-    returnTabBarIcon = (
-      <Icon name="news" size={size(18)} color={tabBarIconColor} />
-    );
+    returnTabBarIcon = <WrapperTaBarIcon source={iconCoverings} />;
   } else if (routeName === 'LossesStack') {
-    returnTabBarIcon = (
-      <Icon name="open-book" size={size(18)} color={tabBarIconColor} />
-    );
+    returnTabBarIcon = <WrapperTaBarIcon source={iconLosses} />;
   } else if (routeName === 'MyDataStack') {
-    returnTabBarIcon = (
-      <Icon name="user" size={size(18)} color={tabBarIconColor} />
-    );
+    returnTabBarIcon = <WrapperTaBarIcon source={iconMyData} />;
   } else {
     returnTabBarIcon = null;
   }

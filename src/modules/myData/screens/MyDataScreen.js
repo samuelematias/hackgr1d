@@ -146,7 +146,7 @@ const MyDataScreen = props => {
   //   );
 
   return (
-    <CollapsingToolbar headerTitle="Tab2">
+    <CollapsingToolbar headerTitle="Meus dados">
       <StatusBarManager />
       <Content>{/*renderCoursesList()*/}</Content>
     </CollapsingToolbar>

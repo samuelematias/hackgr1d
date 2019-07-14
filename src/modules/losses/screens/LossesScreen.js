@@ -146,7 +146,7 @@ const LossesScreen = props => {
   //   );
 
   return (
-    <CollapsingToolbar headerTitle="Tab3">
+    <CollapsingToolbar headerTitle="Sinistros">
       <StatusBarManager />
       <Content>{/*renderCoursesList()*/}</Content>
     </CollapsingToolbar>
